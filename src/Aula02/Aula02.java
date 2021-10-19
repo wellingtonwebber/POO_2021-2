@@ -1,6 +1,6 @@
 package Aula02;
 
-public class Main {
+public class Aula02 {
 
     public static void main(String[] args) {
 

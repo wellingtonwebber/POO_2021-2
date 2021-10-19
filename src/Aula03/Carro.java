@@ -4,6 +4,7 @@ public class Carro {
 
     private String tipo, cor, placa;
     private int numPortas;
+    private Pessoa dono;
 
     public Carro(String tipo, String cor, String placa, int numPortas) {
         this.tipo = tipo;
@@ -42,6 +43,14 @@ public class Carro {
 
     public void setNumPortas(int numPortas) {
         this.numPortas = numPortas;
+    }
+
+    public Pessoa getDono() {
+        return dono;
+    }
+
+    public void setDono(Pessoa dono) {
+        this.dono = dono;
     }
 
     @Override
