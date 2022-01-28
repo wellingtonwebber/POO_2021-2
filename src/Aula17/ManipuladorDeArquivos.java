@@ -1,17 +1,13 @@
-package Aula13;
+package Aula17;
 
 import java.io.*;
 
 public class ManipuladorDeArquivos {
 
-    public File inicializa() throws NomeInvalidoException {
+    public File inicializa() {
 
-        File arquivo = new File("C:\\Users\\Pichau\\OneDrive\\Documentos\\GitHub\\MeusArquivos\\aula13.txt");
+        File arquivo = new File("C:\\Users\\Pichau\\OneDrive\\Documentos\\GitHub\\MeusArquivos\\aula06.txt");
         boolean existe = arquivo.exists();
-
-        if(!arquivo.getName().equals("aula12.txt")){
-            throw new NomeInvalidoException();
-        }
 
         if(!existe){
             try{
@@ -61,4 +57,38 @@ public class ManipuladorDeArquivos {
             System.out.println(e.getMessage());
         }
     }
+
+    public Ponto[] leiaPontos(File arquivo){
+
+        Ponto[] retornoPontos = new Ponto[2];
+        retornoPontos[0] = new Ponto(0,0);
+        retornoPontos[1] = new Ponto(0,0);
+
+        try {
+            FileReader fr = new FileReader(arquivo);
+            BufferedReader br = new BufferedReader(fr);
+            int indice = 0;
+
+            while(br.ready()){
+                String linha = br.readLine();
+                String[] pedacosLinha = linha.split(",");
+                double coordX = Double.parseDouble(pedacosLinha[0]);
+                double coordY = Double.parseDouble(pedacosLinha[1]);
+                retornoPontos[indice].setCoordX(coordX);
+                retornoPontos[indice].setCoordY(coordY);
+                indice++;
+            }
+
+            br.close();
+            fr.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return retornoPontos;
+    }
+
 }
